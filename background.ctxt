@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=background()
+comment1.params=start\ end
+comment1.target=int\ getRandomNumberRange(int,\ int)
+comment2.params=nR
+comment2.target=boolean\ Next_Round(boolean)
+numComments=3
