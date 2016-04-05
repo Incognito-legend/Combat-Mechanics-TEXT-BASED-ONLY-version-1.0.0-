@@ -15,10 +15,12 @@ public class Enemy extends Actor
             if (level.Gamestart)
                 
             {
-                    
-            if (level.e_HP > 0)
+                 if (!(level.Next_Round(true)))
             
-            {
+            {                            
+                    //             if (level.e_HP > 0)
+                    //             
+                    //             {
                     
                 if (!(level.turn))
                 
@@ -33,12 +35,11 @@ public class Enemy extends Actor
                         }
                     
                             e_hitChanceBonus = level.e_SPD - level.p_SPD;
-                            
+                            // ^ if negative e_hitChanceBonus -> then 25 - e_hitChanceBonus = 25 + value = smaller chance at hitting player or larger chance at missing as enemy ;
                         if (level.getRandomNumberRange(1,100) > (25 - e_hitChanceBonus))
                         
                         {              
-                                
-                            
+                                                            
                             System.out.println(" ");
                             
                             System.out.println("The Enemy Hit You!");
@@ -46,6 +47,11 @@ public class Enemy extends Actor
                             System.out.println(" ");
                             
                             e_damage_count = level.e_ATK - level.p_DEF;
+                            
+                            if (e_damage_count < 0)
+                            {
+                                e_damage_count = 0;
+                            }
                             
                             level.p_HP = level.p_HP - e_damage_count;
                             
@@ -58,19 +64,15 @@ public class Enemy extends Actor
                             System.out.println(" ");
                             
                             System.out.println("--------------------------");
-                            
-                            
-                            
+                                                                                   
                             level.turn = true;
-                                
+                            
                         }
                             
-                        else if (level.getRandomNumberRange(1,100) <= 25)
+                        else if (level.getRandomNumberRange(1,100) <= (25 - e_hitChanceBonus))
                             
                         {
-                                
-                            
-                            
+                                                                                        
                             System.out.println(" ");
                             
                             System.out.println(" ");
@@ -93,50 +95,36 @@ public class Enemy extends Actor
                                 
                         }                                                
                         
-                }
-                
-                
-                
-                
-                
+                }                                                                                                    
+                                            
+                    if (!(level.Game_Over))
                     
-                
+                    {
                     
-            }
+                        if (level.p_HP <= 0)
+                    
+                    {
+                                                                                               
+                        level.Game_Over = true;
+                        
+                    }                         
+                             
+                }                        
+                
+                if (level.Game_Victory)
+                    
+                    { 
+                        level.clearConsole = true;
+                        level.Next_Round(true);
+                        //level.removeObject(this);
+                        
+                    }
             
-                if (!(level.Game_Over))
-                
-                {
-                
-                    if (level.p_HP <= 0)
-                
-                {
-                    
-                    
-                    
-                    
-                    level.Game_Over = true;
-                    
-                }                         
-                         
             }
             
         }    
         
-        if (!(level.Next_Round(true)))
-        
-        {
-            
-            if (level.Game_Victory)
-                
-                { 
-                    level.clearConsole = true;
-                    level.Next_Round(true);
-                    level.removeObject(this);
-                    
-                }
-        
-        }
+       
         
     }    
     

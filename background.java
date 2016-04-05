@@ -22,7 +22,7 @@ public class background extends World
     boolean turn = true;
     boolean Game_Over = false;
     boolean Game_Victory = false;
-    
+    boolean penalty_check = false;
     boolean clearConsole = true;
     
     int Round = 1;
@@ -62,127 +62,139 @@ public class background extends World
             if (Game_Over)
             
             {
-                
-                System.out.println("\f");
-                
-                Round = Round + 1;
-                
-                Defeats = Defeats + 1;
-                
-                System.out.println("--------------------------");
+                    
+                    System.out.println("\f");
+                    
+                    Round = Round + 1;
+                    
+                    Defeats = Defeats + 1;
+                    
+                    System.out.println("--------------------------");
+                        
+                        System.out.println(" ");
+                        
+                        System.out.println(" ");                    
+                        
+                        System.out.println("You have been Defeated by Your Enemy!");
+                        
+                        System.out.println(" ");
+                        
+                        System.out.println("You Lose!");
+                        
+                        System.out.println(" ");
+                        
+                        System.out.println(" ");
+                        
+                    
+                    
+                    
+                    System.out.println("--------------------------");
                     
                     System.out.println(" ");
                     
-                    System.out.println(" ");                    
-                    
-                    System.out.println("You have been Defeated by Your Enemy!");
+                    System.out.println("Round: " + Round);
                     
                     System.out.println(" ");
                     
-                    System.out.println("You Lose!");
+                    System.out.println("Wins: " + Wins);
                     
                     System.out.println(" ");
                     
-                    System.out.println(" ");
+                    System.out.println("Defeats: " + Defeats);
                     
-                
-                
-                
-                System.out.println("--------------------------");
-                
-                System.out.println(" ");
-                
-                System.out.println("Round: " + Round);
-                
-                System.out.println(" ");
-                
-                System.out.println("Wins: " + Wins);
-                
-                System.out.println(" ");
-                
-                System.out.println("Defeats: " + Defeats);
-                
-                turn = true;
-                
-                p_HP = 100;
-                
-                p_DEF = p_DEF + getRandomNumberRange(1,5);
-                
-                p_SPD = p_SPD + getRandomNumberRange(1,3);
-                
-                p_MAG = 8;
+                    
+                    
+                    p_HP = 100;
+                    
+                    p_DEF = p_DEF + getRandomNumberRange(1,2);
+                    
+                    p_SPD = p_SPD + getRandomNumberRange(1,2);
+                    
+                    p_MAG = 8;
+    
+                    p_ATK = p_ATK + getRandomNumberRange(1,2);
+                    
+                    if (getRandomNumberRange(1,100) > 50)
+                    
+                    {
+                        
+                        System.out.println("0 penalty check");                                                
+                        
+                        e_DEF = e_DEF - 0;
+                        
+                        e_SPD = e_SPD - 0;
+                    
+                        e_MAG = e_MAG - 0;
+                    
+                        e_ATK = e_ATK - 0;
 
-                p_ATK = p_ATK + getRandomNumberRange(1,5);
+                        e_HP = 100;
+                        
+                    } 
+                    
+                    else if (getRandomNumberRange(1,100) <= 50)
+                    
+                    {
+                        
+                        System.out.println("-1 penalty check");                                                
+                        
+                        e_DEF = e_DEF - 1;
+                        
+                        e_SPD = e_SPD - 1;
+                        
+                        e_MAG = e_MAG - 1;
+                        
+                        e_ATK = e_ATK - 1;
+                        
+                        e_HP = 100;
+                        
+                        penalty_check = true;
+                                                                        
+                }
                 
-                if (getRandomNumberRange(1,2) == 1)
+                if (e_ATK < 0)
                 
                 {
-                    System.out.println("0 penalty check");
                     
-                    e_DEF = e_DEF - 0;
+                    e_ATK = 0;
                     
-                    e_SPD = e_SPD - 0;
+                }
+                    
+                    
+                                    
+                    
+                    
+                                     
+                    
+                    
+                    System.out.println(" ");
+                    
+                    System.out.println("Game Restart Finished");
+                    
+                    System.out.println(" ");
+                    
+                    System.out.println("Player HP: " + p_HP);
+                    
+                    System.out.println(" ");
+                    
+                    System.out.println("Enemy HP: " + e_HP);
+                    
+                    System.out.println(" ");
+                    
+                    System.out.println("--------------------------");
+                    
+                    if ((e_HP == 100) && (p_HP == 100) && (penalty_check))
+                    
+                    {
+                    
+                    Game_Over = false;  
+                    
+                }
                 
-                    e_MAG = e_MAG - 0;
-                
-                    e_ATK = e_ATK - 0;
-                    
-                } 
-                
-                else if (getRandomNumberRange(1,2) == 2)
-                
-                {
-                    
-                    System.out.println("-1 penalty check");
-                    
-                    e_HP = 100;
-                    
-                    e_DEF = e_DEF - 1;
-                    
-                    e_SPD = e_SPD - 1;
-                    
-                    e_MAG = e_MAG - 1;
-                    
-                    e_ATK = e_ATK - 1;
                 
             }
             
-            if (e_ATK < 0)
-            
-            {
-                
-                
-                
-            }
-                
-                
-                                
-                
-                
-                                 
-                
-                
-                System.out.println(" ");
-                
-                System.out.println("Game Restart Finished");
-                
-                System.out.println(" ");
-                
-                System.out.println("Player HP: " + p_HP);
-                
-                System.out.println(" ");
-                
-                System.out.println("Enemy HP: " + e_HP);
-                
-                System.out.println(" ");
-                
-                System.out.println("--------------------------");
-                
-                Game_Over = false;  
-                
-            }
-            
-            if (Game_Victory)
+            else if (Game_Victory)
             
             {
                 
@@ -224,17 +236,17 @@ public class background extends World
                 
                 System.out.println("Defeats: " + Defeats);
                 
-                turn = true;
+               
                 
                 p_HP = 100;
                 
-                p_DEF = p_DEF;
+                p_DEF = p_DEF - getRandomNumberRange(1,2);
                 
                 p_SPD = p_SPD - 1;
                 
-                p_MAG = p_MAG;
+                p_MAG = p_MAG - getRandomNumberRange(1,2);
 
-                p_ATK = p_ATK;
+                p_ATK = p_ATK - getRandomNumberRange(1,2);
                 
                 
                 
@@ -244,7 +256,7 @@ public class background extends World
                 
                 e_SPD = e_SPD + getRandomNumberRange(1,2);
                 
-                e_MAG = e_MAG + getRandomNumberRange(1,5);
+                e_MAG = e_MAG + getRandomNumberRange(1,2);
     
                 e_ATK = e_ATK + getRandomNumberRange(1,2);
                 
@@ -270,15 +282,37 @@ public class background extends World
                 System.out.println("--------------------------");
                 
                 clearConsole = true;
+                                 
+                if ((e_HP == 100) && (p_HP == 100))
                 
-                Game_Victory = false;  
+                    {
+                        
+                    turn = true;
+                    Game_Victory = false;  
+                    
+                }
+                
                 
             }
+            
+            else if (((Game_Over) && (Game_Victory)) || ((e_HP <= 0) && (p_HP <= 0)))
+            
+            {
+                
+                System.out.println("Your enemy has brought you down with them! Defeat by Default!");
+                
+                Game_Victory = false;
+                
+            }
+            
+            
             
             if ((!(Game_Over)) && (!(Game_Victory)))
             
             {
-            
+                
+                penalty_check = false;
+                
                 nR = false;
                 
             }

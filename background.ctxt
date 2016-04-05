@@ -1,8 +1,9 @@
 #BlueJ class context
-comment0.params=
-comment0.target=background()
-comment1.params=start\ end
-comment1.target=int\ getRandomNumberRange(int,\ int)
-comment2.params=nR
-comment2.target=boolean\ Next_Round(boolean)
-numComments=3
+comment0.target=background
+comment1.params=
+comment1.target=background()
+comment2.params=start\ end
+comment2.target=int\ getRandomNumberRange(int,\ int)
+comment3.params=nR
+comment3.target=boolean\ Next_Round(boolean)
+numComments=4
